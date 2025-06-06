@@ -77,7 +77,6 @@ if st.button("Fetch Data"):
                 channel_url = f"https://www.youtube.com/channel/{channel['id']}"
                 duration = stat["contentDetails"].get("duration", "N/A")
 
-                # Optional filtering by selected topics
                 if selected_topics and not any(t in (title + description).lower() for t in selected_topics):
                     continue
 
@@ -129,4 +128,4 @@ if st.button("Fetch Data"):
             st.warning("No matching videos found.")
 
     except Exception as e:
-        st.error(f"An error occurred: {e}")
+        st.error("An error occurred. Please check the logs or your API key and try again.")
