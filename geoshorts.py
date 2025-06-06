@@ -3,7 +3,12 @@ import requests
 from datetime import datetime, timedelta
 from collections import Counter
 import pandas as pd
-import plotly.express as px
+
+try:
+    import plotly.express as px
+except ImportError:
+    st.error("Plotly is not installed. Please run `pip install plotly` in your environment.")
+    st.stop()
 
 # YouTube API Key
 API_KEY = "AIzaSyDXJjwWDp4JDTwmFmjb0-atLV6Qtww28Zg"
@@ -128,4 +133,4 @@ if st.button("Fetch Data"):
             st.warning("No matching videos found.")
 
     except Exception as e:
-        st.error("An error occurred. Please check the logs or your API key and try again.")
+        st.error(f"An error occurred: {e}")
